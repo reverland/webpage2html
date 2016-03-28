@@ -41,6 +41,7 @@ def get(index, relpath=None, verbose=True, usecache=True):
         # urllib2 only accepts valid url, the following code is taken from urllib
         # http://svn.python.org/view/python/trunk/Lib/urllib.py?r1=71780&r2=71779&pathrev=71780
         fullpath = urllib.quote(fullpath, safe="%/:=&?~#+!$,;'@()*[]")
+        fullpath = fullpath.replace('../', '')
         if usecache:
             if fullpath in webpage2html_cache:
                 if verbose: log('[ CACHE HIT ] - %s' % fullpath)
